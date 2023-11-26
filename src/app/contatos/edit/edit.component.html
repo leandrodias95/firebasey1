@@ -1,0 +1,24 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" id="form">
+    <div *ngFor="let contact of contacts">
+        <div class="form-group">
+            <label>Nome:</label>
+            <input id="inputname" type="text" class="form-control" name="nome" [(ngModel)]="contact.name" />
+        </div>
+        <div class="form-group">
+            <label>Telefone:</label>
+            <input class="inputtelephone" type="tel" class="form-control" name="telefone" [(ngModel)]="contact.telephone" />
+        </div>
+    </div>
+    <button mat-raised-button style="background-color: rgb(57, 57, 248); color:white; width:235px; ;">Salvar</button>
+</form>
+<br/><br/>
+
+
+<table mat-table class="mat-elevation-z8">
+        <tr><th mat-header-cell> Name </th><th mat-header-cell>Telefone</th></tr>
+        <tr *ngFor="let data of contactList|async"><td mat-cell> {{data.nome}} </td><td mat-cell> {{data.telefone}} </td><td><button (click)="updateData(data.id)">Editar</button></td>
+        <td><button (click)="deleteData(data.id)">Excluir</button></td>
+        </tr>
+</table>
+  
+ 
